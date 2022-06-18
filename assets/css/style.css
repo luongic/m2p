@@ -147,6 +147,9 @@ header h2 {
 
 /* PLAYLIST */
 .playlist {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
   margin-top: 290px;
   margin-bottom: 114px;
   padding: 12px;
@@ -202,24 +205,18 @@ header h2 {
   margin: 0 3px;
   border-radius: 50%;
   background-color: white;
+  -webkit-animation: bounce .5s alternate infinite;
   animation: bounce .5s alternate infinite;
 }
 
 .ball:nth-child(2){
+  -webkit-animation-delay: .16s;
   animation-delay: .16s;
 }
 
 .ball:nth-child(3){
+  -webkit-animation-delay: .32s;
   animation-delay: .32s;
-}
-
-@keyframes bounce {
-  from {
-    transform: translateY(6px) scaleX(1.25);
-  }
-  to {
-    transform: translateY(-6px) scale(1);
-  }
 }
 
 
@@ -263,7 +260,16 @@ header h2 {
   background-color: var(--background-color);
 }
 
-
+@-webkit-keyframes bounce {
+  from {
+    -webkit-transform: translateY(6px) scaleX(1.25);
+    transform: translateY(6px) scaleX(1.25);
+  }
+  to {
+    -webkit-transform: translateY(-6px) scale(1);
+    transform: translateY(-6px) scale(1);
+  }
+}
 
 @-webkit-keyframes RotateAndBreath {
   0% {
