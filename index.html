@@ -22,7 +22,7 @@
         <div class="dashboard">
           <!-- Header -->
           <header>
-            <h4>Now playing:</h4>
+            <h4>You are hearing:</h4>
             <h2>String 57th & 9th</h2>
           </header>
       
@@ -32,6 +32,17 @@
             </div>
           </div>
       
+          
+        </div>
+      
+        <!-- Playlist -->
+        <div class="playlist">
+
+        </div>
+
+        <div class="bottom-control">
+          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
           <!-- Control -->
           <div class="control">
             <div class="btn btn-repeat">
@@ -52,15 +63,10 @@
             </div>
           </div>
       
-          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
       
           <audio id="audio" src=""></audio>
         </div>
-      
-        <!-- Playlist -->
-        <div class="playlist">
 
-        </div>
     </div>
 
     <script src="./assets/js/index.js">

@@ -103,7 +103,12 @@ const app = {
                 <p class="author">${song.singer}</p>
                 </div>
                 <div class="option">
-                    <i class="fas fa-ellipsis-h"></i>
+                    ♪
+                </div>
+                <div class="option2">
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
                 </div>
             </div>
             `
