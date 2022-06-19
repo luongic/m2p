@@ -15,6 +15,7 @@ const icon = $(`link[rel~='icon']`)
 const randomBtn = $('.btn-random')
 const repeatBtn = $('.btn-repeat')
 const playlist = $('.playlist')
+const wish = $('header h4')
 
 
 
@@ -233,6 +234,23 @@ const app = {
         }
     },
 
+    givenWishes: function(){
+        const d = new Date()
+        const Hour = d.getHours()
+        console.log(Hour)
+
+        if (Hour > 1 && Hour <= 11){
+            wish.textContent = 'Wake your day up with: '
+        }
+        else if(Hour >= 12 && Hour <= 17){
+            wish.textContent = `Take a little break with ${this.currentSong.singer} and the song: `
+
+        }else{
+            wish.textContent = 'Everything will be fine, now take a rest with:'
+
+        }
+    },
+
     loadCurrentSong: function(){
         heading.textContent = this.currentSong.name
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
@@ -240,6 +258,10 @@ const app = {
         title.textContent = `♪ ${this.currentSong.name} ♪`
         icon.href = `${this.currentSong.image}`
         this.activeCurrentSong()
+
+
+        // check time && display
+        this.givenWishes()
     },
     nextSong: function(){
         this.currentIndex++
