@@ -260,6 +260,15 @@ const app = {
     icon.href = `${this.currentSong.image}`;
     this.activeCurrentSong();
 
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: this.currentSong.name,
+      artist: this.currentSong.singer,
+      album: '',
+      artwork: [
+        { src: this.currentSong.image, sizes: '180x180', type: 'image/jpg' }
+      ]
+    });
+
     // check time && display
     this.givenWishes();
   },
