@@ -12,6 +12,7 @@ const nextBtn = $('.btn-next');
 const prevBtn = $('.btn-prev');
 const title = $('title');
 const icon = $(`link[rel~='icon']`);
+const iconApple = $(`link[rel~='apple-touch-icon']`);
 const randomBtn = $('.btn-random');
 const repeatBtn = $('.btn-repeat');
 const playlist = $('.playlist');
@@ -258,6 +259,7 @@ const app = {
     audio.src = this.currentSong.url;
     title.textContent = `♪ ${this.currentSong.name} ♪`;
     icon.href = `${this.currentSong.image}`;
+    iconApple.href = `${this.currentSong.image}`;
     this.activeCurrentSong();
 
     navigator.mediaSession.metadata = new MediaMetadata({
