@@ -267,7 +267,8 @@ const app = {
         artist: `${this.currentSong.singer}`,
         album: 'luongleeeandmysound',
         artwork: [
-          { src: `${this.currentSong.image}`, sizes: '180x180', type: 'image/jpeg' }
+          { src: `${this.currentSong.image}`, sizes: '96x96', type: 'image/jpeg' }
+          { src: `${this.currentSong.image}`, sizes: '128x128', type: 'image/jpeg' }
         ]
       });
     }
