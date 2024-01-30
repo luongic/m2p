@@ -263,9 +263,9 @@ const app = {
 
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: `♪ ${this.currentSong.name} ♪`,
-        artist: `♪ ${this.currentSong.singer} ♪`,
-        album: '',
+        title: `${this.currentSong.name}`,
+        artist: `${this.currentSong.singer}`,
+        album: 'luongleeeandmysound',
         artwork: [
           { src: `${this.currentSong.image}`, sizes: '180x180', type: 'image/jpeg' }
         ]
