@@ -234,6 +234,14 @@ const app = {
           _this.currentIndex = songNode.dataset.index;
           _this.loadCurrentSong();
           audio.play();
+          navigator.mediaSession.metadata = new MediaMetadata({
+      title: this.currentSong.name,
+      artist: this.currentSong.singer,
+      album: '',
+      artwork: [
+        { src: this.currentSong.image, sizes: '180x180', type: 'image/jpg' }
+      ]
+    });
         }
       }
     };
@@ -242,7 +250,6 @@ const app = {
   givenWishes: function () {
     const d = new Date();
     const Hour = d.getHours();
-    console.log(Hour);
 
     if (Hour > 1 && Hour <= 11) {
       wish.textContent = 'Wake your day up with: ';
@@ -261,15 +268,6 @@ const app = {
     icon.href = `${this.currentSong.image}`;
     iconApple.href = `${this.currentSong.image}`;
     this.activeCurrentSong();
-
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: this.currentSong.name,
-      artist: this.currentSong.singer,
-      album: '',
-      artwork: [
-        { src: this.currentSong.image, sizes: '180x180', type: 'image/jpg' }
-      ]
-    });
 
     // check time && display
     this.givenWishes();
