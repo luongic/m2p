@@ -292,6 +292,9 @@ const app = {
       navigator.mediaSession.setActionHandler('pause', () => {
         playBtn.onclick();
       });
+      navigator.mediaSession.setActionHandler('seekto', (details) => {
+        audio.currentTime = details.seekTime;
+      });
     }
 
     // check time && display
