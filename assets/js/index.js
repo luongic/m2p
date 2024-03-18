@@ -271,6 +271,13 @@ const app = {
           { src: `${this.currentSong.image}`, sizes: '128x128', type: 'image/jpeg' }
         ]
       });
+
+      navigator.mediaSession.setActionHandler("previoustrack", () => {
+    prevBtn.onclick()
+  });
+  navigator.mediaSession.setActionHandler("nexttrack", () => {
+    nextBtn.click();
+  });
     }
 
     // check time && display
