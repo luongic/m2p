@@ -281,16 +281,34 @@ const app = {
       });
 
       navigator.mediaSession.setActionHandler('previoustrack', () => {
-        prevBtn.onclick();
+        if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.prevSong();
+      }
+      audio.play();
       });
       navigator.mediaSession.setActionHandler('nexttrack', () => {
-        nextBtn.click();
+        if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.nextSong();
+      }
+      audio.play();
       });
       navigator.mediaSession.setActionHandler('play', () => {
-        playBtn.onclick();
+        if (_this.isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
       });
       navigator.mediaSession.setActionHandler('pause', () => {
-        playBtn.onclick();
+        if (_this.isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
       });
       navigator.mediaSession.setActionHandler('seekto', (details) => {
         audio.currentTime = details.seekTime;
