@@ -280,6 +280,8 @@ const app = {
         ],
       });
 
+      const _this = this;
+
       navigator.mediaSession.setActionHandler('previoustrack', () => {
         if (_this.isRandom) {
         _this.playRandomSong();
