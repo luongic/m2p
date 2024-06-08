@@ -31,6 +31,12 @@ const app = {
       image: './assets/img/no1atall.jpg',
     },
     {
+      name: 'Đừng làm trái tim anh đau',
+      singer: 'Sơn Tùng M-TP',
+      url: './assets/song/dunglamtraitymanhdau.mp3',
+      image: './assets/img/dunglamtraitymanhdau.jpg',
+    },
+    {
       name: 'good 4 u',
       singer: 'Olivia Rodrigo',
       url: './assets/song/good4u.mp3',
