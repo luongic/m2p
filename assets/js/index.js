@@ -228,7 +228,12 @@ const app = {
       if (_this.isRepeat) {
         audio.play();
       } else {
-        nextBtn.click();
+        if (_this.isRandom) {
+          _this.playRandomSong();
+        } else {
+          _this.nextSong();
+        }
+        audio.play();
       }
     };
 
@@ -290,33 +295,33 @@ const app = {
 
       navigator.mediaSession.setActionHandler('previoustrack', () => {
         if (_this.isRandom) {
-        _this.playRandomSong();
-      } else {
-        _this.prevSong();
-      }
-      audio.play();
+          _this.playRandomSong();
+        } else {
+          _this.prevSong();
+        }
+        audio.play();
       });
       navigator.mediaSession.setActionHandler('nexttrack', () => {
         if (_this.isRandom) {
-        _this.playRandomSong();
-      } else {
-        _this.nextSong();
-      }
-      audio.play();
+          _this.playRandomSong();
+        } else {
+          _this.nextSong();
+        }
+        audio.play();
       });
       navigator.mediaSession.setActionHandler('play', () => {
         if (_this.isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
+          audio.pause();
+        } else {
+          audio.play();
+        }
       });
       navigator.mediaSession.setActionHandler('pause', () => {
         if (_this.isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
+          audio.pause();
+        } else {
+          audio.play();
+        }
       });
       navigator.mediaSession.setActionHandler('seekto', (details) => {
         audio.currentTime = details.seekTime;
