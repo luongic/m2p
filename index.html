@@ -1,85 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "icon"  href = "./assets/img/no1atall.jpg" type = "image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b10">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="m2p">
+  <link rel="icon" href="./assets/img/no1atall.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="./assets/img/no1atall.jpg">
-  <title>Mini Music Player</title>
+  <title>m2p · Mini Music Player</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
-
-  
 </head>
 <body>
-    <div class="player">
-        <!-- Dashboard -->
-        <div class="dashboard">
-          <!-- Header -->
-          <header>
-            <h4>You are hearing:</h4>
-            <h2>String 57th & 9th</h2>
-          </header>
-      
-          <!-- CD -->
-          <div class="cd">
-            <div class="cd-thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
-            </div>
-          </div>
-      
-          
-        </div>
-      
-        <!-- Playlist -->
-        <div class="playlist">
-          
-        </div>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.2v13.6a1.2 1.2 0 0 0 1.8 1l11-6.8a1.2 1.2 0 0 0 0-2l-11-6.8A1.2 1.2 0 0 0 7 5.2z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="5.5" y="4.5" width="4.5" height="15" rx="1.4"/><rect x="14" y="4.5" width="4.5" height="15" rx="1.4"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 6.3v11.4a1.2 1.2 0 0 0 1.85 1l8.9-5.7a1.2 1.2 0 0 0 0-2l-8.9-5.7a1.2 1.2 0 0 0-1.85 1z"/><rect x="16.5" y="5" width="2.8" height="14" rx="1.4"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24" fill="currentColor"><g transform="matrix(-1 0 0 1 24 0)"><path d="M4.5 6.3v11.4a1.2 1.2 0 0 0 1.85 1l8.9-5.7a1.2 1.2 0 0 0 0-2l-8.9-5.7a1.2 1.2 0 0 0-1.85 1z"/><rect x="16.5" y="5" width="2.8" height="14" rx="1.4"/></g></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-repeat-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/><path d="M11 10h1v4"/></symbol>
+    <symbol id="i-vol-low" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/></symbol>
+    <symbol id="i-vol-high" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-vol-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></symbol>
+    <symbol id="i-down"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  </svg>
 
-        <div class="bottom-control">
-          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+  <div class="app" id="app">
+    <!-- Library -->
+    <main class="library">
+      <header class="lib-header">
+        <p class="greeting" id="greeting">Xin chào</p>
+        <h1>Nghe gì hôm nay?</h1>
+      </header>
 
-          <!-- Control -->
-          <div class="control">
-            <div class="btn btn-repeat">
-              <i class="fas fa-redo"></i>
-            </div>
-            <div class="btn btn-prev">
-              <i class="fas fa-step-backward"></i>
-            </div>
-            <div class="btn btn-toggle-play">
-              <i class="fas fa-pause icon-pause"></i>
-              <i class="fas fa-play icon-play"></i>
-            </div>
-            <div class="btn btn-next">
-              <i class="fas fa-step-forward"></i>
-            </div>
-            <div class="btn btn-random">
-              <i class="fas fa-random"></i>
-            </div>
-          </div>
-      
-      
-          <audio id="audio" src=""></audio>
+      <div class="search" id="searchBar">
+        <label class="field">
+          <svg class="i i-sm"><use href="#i-search"/></svg>
+          <span class="sr-only">Tìm bài hát</span>
+          <input id="search" type="search" placeholder="Tìm bài hát, nghệ sĩ" autocomplete="off" enterkeyhint="search">
+          <button class="field-clear" id="searchClear" type="button" aria-label="Xoá tìm kiếm" hidden>
+            <svg class="i i-xs"><use href="#i-x"/></svg>
+          </button>
+        </label>
+      </div>
+
+      <div class="lib-actions">
+        <span class="count" id="count"></span>
+        <div class="lib-buttons">
+          <button class="pill" id="shuffleAll" type="button">
+            <svg class="i i-sm"><use href="#i-shuffle"/></svg>Trộn bài
+          </button>
+          <button class="pill primary" id="playAll" type="button">
+            <svg class="i i-sm"><use href="#i-play"/></svg>Phát
+          </button>
         </div>
+      </div>
 
+      <ul class="songs" id="songList"></ul>
+      <p class="empty" id="empty" hidden>Không tìm thấy bài hát nào</p>
+    </main>
+
+    <!-- Mini player -->
+    <div class="mini" id="mini">
+      <button class="mini-open" id="miniOpen" type="button" aria-label="Mở trình phát">
+        <img class="mini-thumb" id="miniThumb" alt="" width="46" height="46">
+        <span class="mini-meta">
+          <span class="mini-title" id="miniTitle"></span>
+          <span class="mini-artist" id="miniArtist"></span>
+        </span>
+      </button>
+      <button class="icon-btn" id="miniPlay" type="button" aria-label="Phát">
+        <svg class="i ic-play"><use href="#i-play"/></svg>
+        <svg class="i ic-pause"><use href="#i-pause"/></svg>
+      </button>
+      <button class="icon-btn" id="miniNext" type="button" aria-label="Bài tiếp theo">
+        <svg class="i"><use href="#i-next"/></svg>
+      </button>
+      <div class="mini-progress"><span id="miniBar"></span></div>
     </div>
 
-    <script src="./assets/js/index.js">
-        
-    </script>
+    <!-- Now playing -->
+    <section class="now" id="now" aria-label="Đang phát">
+      <div class="now-bg" id="nowBg"></div>
+      <div class="now-shade"></div>
 
+      <div class="now-inner">
+        <header class="now-top">
+          <button class="icon-btn now-close" id="nowClose" type="button" aria-label="Thu nhỏ trình phát">
+            <svg class="i"><use href="#i-down"/></svg>
+          </button>
+          <div class="now-top-label">Đang phát<strong>Danh sách của bạn</strong></div>
+          <span class="icon-btn" aria-hidden="true"></span>
+        </header>
+
+        <div class="art-wrap">
+          <img class="art" id="art" alt="" width="600" height="600">
+        </div>
+
+        <div class="now-meta">
+          <h2 id="nowTitle"></h2>
+          <p id="nowArtist"></p>
+        </div>
+
+        <div class="seek">
+          <input class="range" id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Tua bài hát">
+          <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+        </div>
+
+        <div class="controls">
+          <button class="ctrl sm" id="shuffle" type="button" aria-label="Phát ngẫu nhiên" aria-pressed="false">
+            <svg class="i"><use href="#i-shuffle"/></svg>
+          </button>
+          <button class="ctrl" id="prev" type="button" aria-label="Bài trước">
+            <svg class="i"><use href="#i-prev"/></svg>
+          </button>
+          <button class="ctrl play" id="play" type="button" aria-label="Phát">
+            <svg class="i ic-play"><use href="#i-play"/></svg>
+            <svg class="i ic-pause"><use href="#i-pause"/></svg>
+          </button>
+          <button class="ctrl" id="next" type="button" aria-label="Bài tiếp theo">
+            <svg class="i"><use href="#i-next"/></svg>
+          </button>
+          <button class="ctrl sm" id="repeat" type="button" aria-label="Lặp lại bài này" aria-pressed="false">
+            <svg class="i ic-rep"><use href="#i-repeat"/></svg>
+            <svg class="i ic-rep1"><use href="#i-repeat-1"/></svg>
+          </button>
+        </div>
+
+        <div class="volume" id="volume">
+          <button class="icon-btn" id="mute" type="button" aria-label="Tắt tiếng" aria-pressed="false">
+            <svg class="i i-sm ic-vol"><use href="#i-vol-low"/></svg>
+            <svg class="i i-sm ic-mute"><use href="#i-vol-mute"/></svg>
+          </button>
+          <input class="range" id="vol" type="range" min="0" max="100" step="1" value="100" aria-label="Âm lượng">
+          <svg class="i i-sm vol-hi" aria-hidden="true"><use href="#i-vol-high"/></svg>
+          <span class="vol-hint">Chỉnh bằng nút âm lượng của máy</span>
+        </div>
+
+        <button class="up-next"id="upNext" type="button">
+          <img id="upNextThumb" alt="" width="44" height="44">
+          <span class="up-next-meta">
+            <span class="up-next-label">Tiếp theo</span>
+            <span class="up-next-title" id="upNextTitle"></span>
+          </span>
+          <svg class="i i-sm"><use href="#i-next"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+
+  <script src="./assets/js/index.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-<!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
